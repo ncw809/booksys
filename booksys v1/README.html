@@ -1,0 +1,92 @@
+<body bgcolor=white>
+
+<h2>An implementation of the booking system</h2>
+
+This directory contains a complete implementation of the basic booking system
+described in Chapters 4 to 7 of the book.  
+
+<h4>Directory contents</h4>
+
+<ul>
+
+<li> <code>booksys.properties</code>: a Java property file defining the JDBC
+connection information for the program.  This may have to be modified to make
+it consistent with the database being used. 
+
+<p>
+
+<li> <code>build.xml</code>: an <a href="http://ant.apache.org">Ant</a>
+makefile for the system.
+
+<p>
+
+<li> <code>db.sql</code>: a file containing SQL statements to build the
+database tables for the implementation. 
+
+<p>
+
+<li> <code>src</code>: the root of the directory tree containing the Java
+source code for the program.
+</ul>
+
+<h4>To run the program</h4>
+
+<ol>
+
+<li> Build the application.  This can be done easily using <a
+href="http://ant.apache.org">Ant</a>, in which case the object files will be
+placed in a <code>build/classes</code> subdirectory, or by hand, if Ant is not
+available.
+
+<p>
+
+<li> Create database tables as defined in the <code>db.sql</code> file, and
+ensure that the database is available to the program and that the DBMS is
+running.
+
+<p>
+
+<li> Modify the <code>booksys.properties</code> file to define the connection
+parameters for the database being used. Copy this file to the classes
+subdirectory.  The Ant build file will do this automatically.
+
+<p>
+
+<li> The root class of the system is
+<code>booksys.presentation.BookingSystemApp</code>.  Change to the classes
+subdirectory and point the Java interpreter to this class. 
+
+</ol>
+
+<h4>Shortcomings</h4>
+
+This program is intended for illustrative purposes only, and I have tried to
+keep the code as simple as possible.  This is a no doubt incomplete list of
+things that would need to be improved in a more professional version.
+
+<ol>
+
+<li> The code uses various deprecated methods from <code>java.util.Date</code>
+and <code>java.sql.Time</code> as they seemed to offer the most straightforward
+way of accomplishing certain tasks.  Apologies to any Java purists who may be
+offended by this!
+
+<p>
+
+<li> The validation of data entered by the user is extremely rudimentary.  In
+particular:
+
+<p>
+
+<ul>
+<li> Dates must be entered in the format `<tt>YYYY-MM-DD</tt>'.
+<p>
+<li> Times must be entered in the format `<tt>HH:MM:SS</tt>'.
+<p>
+<li> If a booking is created for a time not shown on the display, there will be
+no warning of this fact.  The booking will be silently created, but not
+displayed, which can be slightly disconcerting.
+</ul>
+
+
+</ol>

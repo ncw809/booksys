@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+
+<!-- Ant buildfile for the restaurant booking system -->
+
+<project name="booksys" default="compile" basedir=".">
+
+  <!-- Project directories -->
+  <property name="src.dir" value="src"/>
+
+  <!-- Build directory names -->
+  <property name="build.dir" value="build"/>
+  <property name="build.classes" value="${build.dir}/classes"/>
+
+  <!-- Target to create build directories -->
+  <target name="prepare">
+    <mkdir dir="${build.dir}"/>
+    <mkdir dir="${build.classes}"/>
+  </target>
+
+  <!-- Target to remove build directories -->
+  <target name="clean"
+	  description="Removes all generated files">
+    <delete dir="${build.dir}"/>
+  </target>
+
+  <!-- Target to compile booking system -->
+  <target name="compile" depends="prepare"
+	  description="Compiles all source code">
+    <javac destdir="${build.classes}"
+	   deprecation="true">
+       <src path="${src.dir}"/>
+       <exclude name="booksys/test/**"/>
+    </javac>
+    <copy todir="${build.classes}"
+	  file="booksys.properties"/>
+  </target>
+
+  <target name="all" depends="clean,compile"
+	  description="Removes generated files and recompiles"/>
+
+</project>
